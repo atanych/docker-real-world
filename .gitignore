@@ -1,2 +1,3 @@
 .idea
 chat
+docker_config/docker_sockets/*

@@ -5,7 +5,6 @@ services:
     ports:
       - "88:80"
     volumes:
-      - ./docker_config/chat.conf:/var/www/gateway
       - ./docker_config/docker_sockets:/run/docker_sockets
   ruby:
     build: ./docker_config/ruby
@@ -16,19 +15,20 @@ services:
 #    links:
 #      - db
 #      - redis
-#  db:
-#    build: ./db
-#    ports:
-#      - "3306:3306"
-#    environment:
-#      MYSQL_ROOT_PASSWORD: foR1980
-#      MYSQL_DATABASE: helpdesk
-#    volumes:
-#      - db:/var/lib/mysql
-#      - ./docker_sockets:/run/docker_sockets
+  db:
+    build: ./docker_config/db
+    environment:
+      POSTGRES_USER: chat
+      POSTGRES_PASSWORD: asdasd
+      POSTGRES_DB: chat
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker_config/docker_sockets:/run/docker_sockets
 #  redis:
 #    image: redis:3.2
 #    ports:
 #      - "6379:6379"
-#volumes:
-#  db:
+volumes:
+  pgdata:
