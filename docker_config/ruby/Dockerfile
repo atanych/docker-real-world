@@ -6,6 +6,7 @@ RUN curl -L https://deb.nodesource.com/setup_6.x | bash - \
 
 
 RUN mkdir -p /root/scripts
+COPY start.sh /root/scripts/start.sh
 
 WORKDIR /var/www/chat
 
@@ -13,4 +14,4 @@ WORKDIR /var/www/chat
 EXPOSE 3000
 
 #ENTRYPOINT ["bundle install --path vendor/bundle"]
-CMD ["bundle", "exec", "puma"]
+CMD /root/scripts/start.sh

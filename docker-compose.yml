@@ -22,13 +22,13 @@ services:
       POSTGRES_PASSWORD: asdasd
       POSTGRES_DB: chat
     ports:
-      - "5432:5432"
+      - "5431:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./docker_config/docker_sockets:/run/docker_sockets
-#  redis:
-#    image: redis:3.2
-#    ports:
-#      - "6379:6379"
+  redis:
+    image: redis:3.2
+    ports:
+      - "6378:6379"
 volumes:
   pgdata:
