@@ -1,3 +1,3 @@
 #!/bin/bash
-bundle check || bundle exec
+bundle check || bundle install
 bundle exec puma --preload
