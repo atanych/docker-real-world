@@ -1,3 +1,4 @@
 .idea
 chat
-docker_config/docker_sockets/*.sock
+docker_config/docker_sockets/*
+!docker_config/docker_sockets/.keep
