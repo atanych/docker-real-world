@@ -12,9 +12,9 @@ services:
       - ./chat:/var/www/chat
       - ./chat/vendor/bundle:/usr/local/bundle
       - ./docker_config/docker_sockets:/run/docker_sockets
-#    links:
+    links:
 #      - db
-#      - redis
+      - redis
   db:
     build: ./docker_config/db
     environment:
