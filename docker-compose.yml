@@ -13,7 +13,6 @@ services:
       - ./chat/vendor/bundle:/usr/local/bundle
       - ./docker_config/docker_sockets:/run/docker_sockets
     links:
-#      - db
       - redis
   sidekiq:
     build: ./docker_config/sidekiq
@@ -24,6 +23,7 @@ services:
       - ./chat/vendor/bundle:/usr/local/bundle
     links:
       - redis
+    command: ["/wait-for-it.sh", "web:80", "--", "bundle", "exec", "sidekiq"]
   db:
     build: ./docker_config/db
     environment:
