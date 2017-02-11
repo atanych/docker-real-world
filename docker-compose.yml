@@ -23,7 +23,6 @@ services:
       - ./chat/vendor/bundle:/usr/local/bundle
     links:
       - redis
-    command: ["/wait-for-it.sh", "web:80", "--", "bundle", "exec", "sidekiq"]
   db:
     build: ./docker_config/db
     environment:
