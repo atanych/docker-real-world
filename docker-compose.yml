@@ -14,9 +14,14 @@ services:
       - ./docker_config/docker_sockets:/run/docker_sockets
     links:
       - redis
+    depends_on:
+      - db
+      - redis
   sidekiq:
     build: ./docker_config/sidekiq
     depends_on:
+      - db
+      - redis
       - web
     volumes:
       - ./chat:/var/www/chat
