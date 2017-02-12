@@ -4,16 +4,11 @@ RUN curl -L https://deb.nodesource.com/setup_6.x | bash - \
   && apt-get install -y nodejs \
   && mkdir -p /var/www/chat
 
-RUN adduser --disabled-password --gecos '' ruby
-
-RUN mkdir -p /home/ruby/scripts
-
-COPY start.sh /home/ruby/scripts/start.sh
-
-USER ruby
+RUN mkdir -p /root/scripts
+COPY start.sh /root/scripts/start.sh
 
 WORKDIR /var/www/chat
 
 EXPOSE 3000
 
-CMD /home/ruby/scripts/start.sh
+CMD /root/scripts/start.sh
