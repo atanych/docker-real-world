@@ -8,6 +8,8 @@ services:
       - ./docker_config/docker_sockets:/run/docker_sockets
   web:
     build: ./docker_config/web
+    tty: true # for interactive mode
+    stdin_open: true # for interactive mode
     volumes:
       - ./chat:/var/www/chat
       - ./chat/vendor/bundle:/usr/local/bundle
